@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Animal Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Memory Game</h1>
+        <div class="stats-container">
+            <div id="moves-container">Moves: <span id="moves">0</span></div>
+            <div id="timer-container">Time: <span id="timer">0s</span></div>
+        </div>
+        <div id="game-board" class="game-board"></div>
+        <button id="restart-btn">Restart</button>
+    </div>
+
+    <div id="win-screen" class="win-screen">
+        <div class="win-message">
+            <h2>You Won!</h2>
+            <p>Great job matching all the cute animals!</p>
+            <div id="final-stats"></div>
+            <button id="play-again-btn">Play Again</button>
+        </div>
+        <div class="confetti"></div>
+    </div>
+
+    <audio id="flip-sound" src="assets/flip.wav" preload="auto"></audio>
+    <audio id="match-sound" src="assets/match.wav" preload="auto"></audio>
+    <audio id="win-sound" src="assets/win.wav" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
