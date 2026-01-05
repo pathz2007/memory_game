@@ -1,0 +1,162 @@
+:root {
+    --bg-color: #F0F8FF;
+    --board-bg: #B0E0E6;
+    --card-bg: #FFDAB9;
+    --card-face-bg: #FFFFFF;
+    --text-color: #4A4A4A;
+    --accent-color: #FFA07A;
+    --win-bg: rgba(0, 0, 0, 0.7);
+}
+
+body {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--bg-color);
+    margin: 0;
+    color: var(--text-color);
+}
+
+.game-container {
+    text-align: center;
+}
+
+h1 {
+    color: var(--accent-color);
+    text-shadow: 2px 2px #fff;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 10px;
+    perspective: 1000px;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+
+.card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+.card-face--front {
+    background: var(--card-bg);
+    /* Patterned back */
+    background-image: repeating-linear-gradient(45deg, #FFC0CB, #FFC0CB 10px, #FFFFFF 10px, #FFFFFF 20px);
+}
+
+.card-face--back {
+    background-color: var(--card-face-bg);
+    transform: rotateY(180deg);
+}
+
+.card-face--back img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+#restart-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-family: inherit;
+    color: white;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#restart-btn:hover {
+    background-color: #FF7F50;
+}
+
+/* Win Screen */
+.win-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--win-bg);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.win-screen.show {
+    display: flex;
+}
+
+.win-message {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+#play-again-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-family: inherit;
+    color: white;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Confetti placeholder */
+.confetti {
+    /* Basic idea, can be improved with JS */
+    /* For now, just a happy emoji */
+    font-size: 50px;
+}
+.confetti::before {
+    content: '🎉';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: drop 1s ease-out forwards;
+}
+
+@keyframes drop {
+    from { top: -50px; opacity: 0; }
+    to { top: 20px; opacity: 1; }
+}
